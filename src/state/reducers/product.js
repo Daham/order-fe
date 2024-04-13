@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "axios";
-import configuration from "../../config";
+
+const ORDER_API_URL = window.config.orderApiUrl;
 
 const sliceId = 'product';
 
@@ -9,11 +10,11 @@ export const createProduct = createAsyncThunk(
     // eslint-disable-next-line no-empty-pattern
     async ({name, description, price}) => {
 
-        console.log(configuration.api.orderApiUrl)
+        console.log(ORDER_API_URL)
 
         const config = {
             method: 'post',
-            url: `${configuration.api.orderApiUrl}/products`,
+            url: `${ORDER_API_URL}/products`,
             data: {
                 "name": name,
                 "description": description,

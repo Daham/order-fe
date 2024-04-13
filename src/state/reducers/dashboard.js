@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "axios";
-import configuration from "../../config";
+
+const ORDER_API_URL = window.config.orderApiUrl;
 
 const sliceId = 'dashboard';
 
@@ -11,7 +12,7 @@ export const fetchProducts = createAsyncThunk(
 
         const config = {
             method: 'get',
-            url: `${configuration.api.orderApiUrl}/products`,
+            url: `${ORDER_API_URL}/products`,
             params: {rowsPerPage: 10},
         };
 
@@ -27,7 +28,7 @@ export const fetchCustomers = createAsyncThunk(
 
         const config = {
             method: 'get',
-            url: `${configuration.api.orderApiUrl}/customers`,
+            url: `${ORDER_API_URL}/customers`,
             params: {rowsPerPage: 10},
         };
 

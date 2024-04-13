@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "axios";
-import configuration from "../../config";
+
+const ORDER_API_URL = window.config.orderApiUrl;
 
 const sliceId = 'customer';
 
@@ -11,7 +12,7 @@ export const createCustomer = createAsyncThunk(
 
         const config = {
             method: 'post',
-            url: `${configuration.api.orderApiUrl}/customers`,
+            url: `${ORDER_API_URL}/customers`,
             data: {
                 "email": email,
                 "address": address,
