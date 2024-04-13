@@ -8,10 +8,10 @@ import store from './state/store';
 import {AuthProvider} from "@asgardeo/auth-react";
 
 const config = {
-    signInRedirectURL: window.config.auth.signInRedirectURL,
-    signOutRedirectURL: window.config.auth.signOutRedirectURL,
-    clientID: window.config.auth.clientID,
-    baseUrl: window.config.auth.baseUrl,
+    signInRedirectURL: window.configs.auth.signInRedirectURL,
+    signOutRedirectURL: window.configs.auth.signOutRedirectURL,
+    clientID: window.configs.auth.clientID,
+    baseUrl: window.configs.auth.baseUrl,
     scope: ["openid", "profile"]
 };
 

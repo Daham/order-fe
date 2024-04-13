@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "axios";
 
-const ORDER_API_URL = window.config.orderApiUrl;
+const ORDER_API_URL = window.configs.orderApiUrl;
 
 const sliceId = 'product';
 
