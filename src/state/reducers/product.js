@@ -12,9 +12,14 @@ export const createProduct = createAsyncThunk(
 
         console.log(ORDER_API_URL)
 
+        const accessToken = sessionStorage.getItem("ACCESS_TOKEN");
+
         const config = {
             method: 'post',
             url: `${ORDER_API_URL}/products`,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             data: {
                 "name": name,
                 "description": description,

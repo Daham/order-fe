@@ -10,9 +10,14 @@ export const createCustomer = createAsyncThunk(
     // eslint-disable-next-line no-empty-pattern
     async ({email, address, firstName, lastName, phone}) => {
 
+        const accessToken = sessionStorage.getItem("ACCESS_TOKEN");
+
         const config = {
             method: 'post',
             url: `${ORDER_API_URL}/customers`,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             data: {
                 "email": email,
                 "address": address,

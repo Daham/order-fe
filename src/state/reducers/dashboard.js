@@ -10,9 +10,14 @@ export const fetchProducts = createAsyncThunk(
     // eslint-disable-next-line no-empty-pattern
     async ({}) => {
 
+        const accessToken = sessionStorage.getItem("ACCESS_TOKEN");
+
         const config = {
             method: 'get',
             url: `${ORDER_API_URL}/products`,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             params: {rowsPerPage: 10},
         };
 
@@ -26,9 +31,14 @@ export const fetchCustomers = createAsyncThunk(
     // eslint-disable-next-line no-empty-pattern
     async ({}) => {
 
+        const accessToken = sessionStorage.getItem("ACCESS_TOKEN");
+
         const config = {
             method: 'get',
             url: `${ORDER_API_URL}/customers`,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             params: {rowsPerPage: 10},
         };
 

@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { styled } from '@mui/system';
+import {useState} from 'react';
+import {Button, Drawer, List, ListItem, ListItemIcon, ListItemText} from '@mui/material';
+import {styled} from '@mui/system';
+import {useAuthContext} from "@asgardeo/auth-react";
+import {useNavigate} from "react-router";
 
 const Main = styled('main')({
     flexGrow: 1,
@@ -11,10 +13,21 @@ const Container = styled('div')({
     display: 'flex',
 });
 
-const Sidebar = ({ views }) => {
+const Sidebar = ({views}) => {
     const [currentPage, setCurrentPage] = useState(views[0].name);
 
+    const {signOut} = useAuthContext();
+
+    const navigate = useNavigate();
+
     const handlePageChange = (page) => {
+        signOut().then(r => {
+            navigate("/login")
+        });
+
+    };
+
+    const handleSignOut = (page) => {
         setCurrentPage(page);
     };
 
@@ -52,18 +65,19 @@ const Sidebar = ({ views }) => {
                             }}
                         >
                             <ListItemIcon>
-                                <view.icon />
+                                <view.icon/>
                             </ListItemIcon>
-                            <ListItemText primary={view.name} />
+                            <ListItemText primary={view.name}/>
                         </ListItem>
                     ))}
                 </List>
             </Drawer>
             <Main>
                 {views.map(view => (
-                    currentPage === view.name && <view.component key={view.name} />
+                    currentPage === view.name && <view.component key={view.name}/>
                 ))}
             </Main>
+            <Button onClick={handleSignOut}>Sign Out</Button> {/* Add signout button */}
         </Container>
     );
 };
