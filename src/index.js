@@ -15,7 +15,9 @@ const config = {
     scope: ["openid", "profile"]
 };
 
+console.log("==========INDEX========1========")
 console.log(config)
+console.log("==========INDEX========2========")
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
